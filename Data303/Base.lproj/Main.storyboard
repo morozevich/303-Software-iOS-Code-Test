@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Users Table View Controller-->
+        <!--303 Data-->
         <scene sceneID="V2Q-QU-ekY">
             <objects>
                 <tableViewController id="Gpx-Vl-wYu" customClass="UsersTableViewController" customModule="Data303" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,22 +18,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userIdentify" id="YtZ-sC-Y6l">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userIdentify" rowHeight="109" id="YtZ-sC-Y6l" customClass="UserTableViewCell" customModule="Data303" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YtZ-sC-Y6l" id="ldo-jx-bTT">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="test..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ns5-fX-cnt">
-                                            <rect key="frame" x="16" y="11" width="44" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8V-lA-Frl">
+                                            <rect key="frame" x="16" y="8" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbi-n7-X1D">
+                                            <rect key="frame" x="16" y="37" width="343" height="21"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NLP-Pd-iAj">
+                                            <rect key="frame" x="16" y="66" width="343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="nbi-n7-X1D" firstAttribute="top" secondItem="h8V-lA-Frl" secondAttribute="bottom" constant="8" id="4N8-hh-JfO"/>
+                                        <constraint firstItem="NLP-Pd-iAj" firstAttribute="top" secondItem="nbi-n7-X1D" secondAttribute="bottom" constant="8" id="BEQ-pJ-3eL"/>
+                                        <constraint firstAttribute="trailing" secondItem="NLP-Pd-iAj" secondAttribute="trailing" constant="16" id="Bpt-Jg-sGC"/>
+                                        <constraint firstItem="NLP-Pd-iAj" firstAttribute="leading" secondItem="ldo-jx-bTT" secondAttribute="leading" constant="16" id="D6J-bz-rgJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="NLP-Pd-iAj" secondAttribute="bottom" constant="21.5" id="H84-PV-Meh"/>
+                                        <constraint firstItem="nbi-n7-X1D" firstAttribute="leading" secondItem="ldo-jx-bTT" secondAttribute="leading" constant="16" id="KR0-pJ-QbC"/>
+                                        <constraint firstItem="h8V-lA-Frl" firstAttribute="top" secondItem="ldo-jx-bTT" secondAttribute="top" constant="8" id="PnJ-Ps-evT"/>
+                                        <constraint firstAttribute="trailing" secondItem="h8V-lA-Frl" secondAttribute="trailing" constant="16" id="SQP-hv-dpL"/>
+                                        <constraint firstItem="h8V-lA-Frl" firstAttribute="leading" secondItem="ldo-jx-bTT" secondAttribute="leading" constant="16" id="n0t-PL-up4"/>
+                                        <constraint firstAttribute="trailing" secondItem="nbi-n7-X1D" secondAttribute="trailing" constant="16" id="vux-qZ-Qb0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityLabel" destination="NLP-Pd-iAj" id="boB-YM-OX0"/>
+                                    <outlet property="firstNameLabel" destination="h8V-lA-Frl" id="Cf1-1L-qtO"/>
+                                    <outlet property="lastNameLabel" destination="nbi-n7-X1D" id="JjM-oS-4lB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -41,7 +69,7 @@
                             <outlet property="delegate" destination="Gpx-Vl-wYu" id="vkd-hA-8Dr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="GRx-yp-Ajd"/>
+                    <navigationItem key="navigationItem" title="303 Data" id="GRx-yp-Ajd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oxd-cf-Mx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

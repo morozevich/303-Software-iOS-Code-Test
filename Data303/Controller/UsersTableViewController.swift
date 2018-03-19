@@ -28,6 +28,7 @@ class UsersTableViewController: UITableViewController {
         super.viewDidLoad()
             makeRequest(url: Server.UserResource)
             { [weak self] (data, response, error) -> Void in
+                // [weak self] to avoid dependecy cycle
                 if data != nil {
                     let publicidadResponseArray = self?.parserResponse(data: data) ?? []
                     for dictionary in publicidadResponseArray {
@@ -50,6 +51,9 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StoryBoard.cellIdentify, for: indexPath)
+        if let userCell = cell as? UserTableViewCell {
+            userCell.user = users[indexPath.row]
+        }
         return cell
     }
 
