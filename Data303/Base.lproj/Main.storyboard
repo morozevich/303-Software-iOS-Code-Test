@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--303 Data-->
+        <!--303 - Users Data-->
         <scene sceneID="V2Q-QU-ekY">
             <objects>
                 <tableViewController id="Gpx-Vl-wYu" customClass="UsersTableViewController" customModule="Data303" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ngd-ia-vOV">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ngd-ia-vOV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,7 +102,13 @@
                             <outlet property="delegate" destination="Gpx-Vl-wYu" id="vkd-hA-8Dr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="303 Data" id="GRx-yp-Ajd"/>
+                    <navigationItem key="navigationItem" title="303 - Users Data" id="GRx-yp-Ajd">
+                        <barButtonItem key="rightBarButtonItem" image="refresh" id="zNz-uZ-IVM">
+                            <connections>
+                                <action selector="refreshAction:" destination="Gpx-Vl-wYu" id="F6E-Wy-khh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oxd-cf-Mx4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,4 +133,7 @@
             <point key="canvasLocation" x="-564" y="224"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="refresh" width="24" height="24"/>
+    </resources>
 </document>

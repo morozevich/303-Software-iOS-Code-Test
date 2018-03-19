@@ -10,36 +10,46 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
-    var users = [User]()
-
-    struct StoryBoard
-    {
+    struct StoryBoard {
         static let cellIdentify = "userIdentify"
     }
 
-    struct Server
-    {
+    struct Server {
         static let UserResource = "http://www.filltext.com/?rows=100&fname=%7BfirstName%7D&lname=%7BlastName%7D&city=%7Bcity%7D&pretty=true"
     }
+
+    var users = [User]()
 
     // MARK: - Controller Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            makeRequest(url: Server.UserResource)
-            { [weak self] (data, response, error) -> Void in
-                // [weak self] to avoid dependecy cycle
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(
+            self,
+            action: #selector(refresh),
+            for: .valueChanged
+        )
+        tableView.refreshControl?.beginRefreshing()
+        refresh()
+    }
+
+    @objc func refresh() {
+        makeRequest(url: Server.UserResource){ [weak self] (data, response, error) -> Void in
+            // [weak self] to avoid dependecy cycle
+            DispatchQueue.main.sync {
+                self?.users = [User]()
                 if data != nil {
                     let publicidadResponseArray = self?.parserResponse(data: data) ?? []
                     for dictionary in publicidadResponseArray {
                         let user = User(dictionary: dictionary as NSDictionary)
                         self?.users.append(user)
                     }
-                    DispatchQueue.main.sync {
-                        self?.tableView.reloadData()
-                    }
                 }
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.tableView.reloadData()
             }
+        }
     }
 
     // MARK: - Table view data source
@@ -85,6 +95,13 @@ class UsersTableViewController: UITableViewController {
             print("Error to convert data of body")
             return []
         }
+    }
+
+    // MARK: - Refresh Action
+
+    @IBAction func refreshAction(_ sender: UIBarButtonItem) {
+        tableView.refreshControl?.beginRefreshing()
+        refresh()
     }
 
 }
