@@ -30,7 +30,7 @@ class UsersTableViewController: UITableViewController {
             action: #selector(refresh),
             for: .valueChanged
         )
-        tableView.refreshControl?.beginRefreshing()
+        initUIRefreshing()
         refresh()
     }
 
@@ -100,8 +100,15 @@ class UsersTableViewController: UITableViewController {
     // MARK: - Refresh Action
 
     @IBAction func refreshAction(_ sender: UIBarButtonItem) {
-        tableView.refreshControl?.beginRefreshing()
+        initUIRefreshing()
         refresh()
+    }
+
+    func initUIRefreshing() {
+        let height = tableView.refreshControl?.frame.size.height ?? 0
+        let position = tableView.contentOffset.y - height
+        tableView.setContentOffset(CGPoint(x: 0, y: position), animated: true)
+        tableView.refreshControl?.beginRefreshing()
     }
 
 }
