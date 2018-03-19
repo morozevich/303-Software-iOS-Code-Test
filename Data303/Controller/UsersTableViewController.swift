@@ -10,14 +10,17 @@ import UIKit
 
 class UsersTableViewController: UITableViewController {
 
+    // MARK: - Storyboard keys
+
     struct StoryBoard {
         static let cellIdentify = "userIdentify"
     }
 
+    // MARK: - END_POINT for resource of data
+
     struct Server {
         static let UserResource = "http://www.filltext.com/?rows=100&fname=%7BfirstName%7D&lname=%7BlastName%7D&city=%7Bcity%7D&pretty=true"
     }
-
     var users = [User]()
 
     // MARK: - Controller Life Cycle
@@ -32,24 +35,6 @@ class UsersTableViewController: UITableViewController {
         )
         initUIRefreshing()
         refresh()
-    }
-
-    @objc func refresh() {
-        makeRequest(url: Server.UserResource){ [weak self] (data, response, error) -> Void in
-            // [weak self] to avoid dependecy cycle
-            DispatchQueue.main.sync {
-                self?.users = [User]()
-                if data != nil {
-                    let publicidadResponseArray = self?.parserResponse(data: data) ?? []
-                    for dictionary in publicidadResponseArray {
-                        let user = User(dictionary: dictionary as NSDictionary)
-                        self?.users.append(user)
-                    }
-                }
-                self?.tableView.refreshControl?.endRefreshing()
-                self?.tableView.reloadData()
-            }
-        }
     }
 
     // MARK: - Table view data source
@@ -109,6 +94,24 @@ class UsersTableViewController: UITableViewController {
         let position = tableView.contentOffset.y - height
         tableView.setContentOffset(CGPoint(x: 0, y: position), animated: true)
         tableView.refreshControl?.beginRefreshing()
+    }
+
+    @objc func refresh() {
+        makeRequest(url: Server.UserResource){ [weak self] (data, response, error) -> Void in
+            // [weak self] to avoid dependecy cycle
+            DispatchQueue.main.sync {
+                self?.users = [User]()
+                if data != nil {
+                    let publicidadResponseArray = self?.parserResponse(data: data) ?? []
+                    for dictionary in publicidadResponseArray {
+                        let user = User(dictionary: dictionary as NSDictionary)
+                        self?.users.append(user)
+                    }
+                }
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.tableView.reloadData()
+            }
+        }
     }
 
 }
